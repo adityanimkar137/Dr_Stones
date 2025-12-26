@@ -1,0 +1,754 @@
+/* ========================================
+   ANCIENT STONE EMPORIUM - STYLE (TONED DOWN)
+   ======================================== */
+
+/* ========== ROOT VARIABLES ========== */
+:root {
+    --ancient-parchment: #f4ede1;
+    --ancient-sepia: #e8dcc4;
+    --ancient-bronze: #8b6914;
+    --ancient-gold: #d4af37;
+    --ancient-copper: #b87333;
+    --ancient-stone: #5a5550;
+    --ancient-obsidian: #1a1714;
+    --ancient-moss: #4a5a3c;
+    --ancient-rust: #8b4513;
+    --ancient-aged: #c9b896;
+
+    /* simplified shadows/glows */
+    --shadow-soft: 0 6px 20px rgba(0,0,0,0.45);
+    --shadow-subtle: 0 2px 6px rgba(0,0,0,0.25);
+    --form-bg: rgba(255,255,255,0.02);
+
+    /* Form visibility and typography fixes */
+    --form-text: #efe9db;
+    --placeholder: #bfb6a3;
+    --input-border: rgba(255,255,255,0.06);
+}
+
+/* ========== GLOBAL STYLES ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'IM Fell English', 'Crimson Text', serif;
+    background-color: #0f0f0f; /* slightly softer */
+    color: var(--ancient-parchment);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Optional subtle texture (very low contrast) */
+.ancient-texture {
+    position: fixed;
+    inset: 0;
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,0.01),
+            rgba(255,255,255,0.01) 4px,
+            transparent 4px,
+            transparent 30px
+        );
+    pointer-events: none;
+    opacity: 0.12;
+    z-index: 1;
+}
+
+/* Typography - reduced ornamentation */
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: none;
+    color: var(--ancient-gold);
+    text-shadow: none;
+}
+
+/* ========== NAVBAR ========== */
+.ancient-nav {
+    background: linear-gradient(180deg, rgba(20,20,20,0.98), rgba(35,35,35,0.98));
+    border-bottom: 1px solid rgba(139,105,20,0.25);
+    box-shadow: var(--shadow-subtle);
+    padding: 0.6rem 0;
+    z-index: 10;
+}
+
+.ancient-brand {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ancient-gold);
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ancient-link {
+    font-family: 'Cinzel', serif;
+    color: var(--ancient-aged);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.4rem 0.8rem;
+    transition: color 0.18s ease, background 0.18s ease;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.ancient-link:hover {
+    color: var(--ancient-gold);
+    background: rgba(212,175,55,0.06);
+}
+
+/* Cart badge */
+.cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background: var(--ancient-rust);
+    color: var(--ancient-parchment);
+    border-radius: 999px;
+    padding: 0.12rem 0.45rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border: 1px solid rgba(139,105,20,0.3);
+}
+
+/* Dropdown (simpler) */
+.ancient-dropdown {
+    background: #2b2a28;
+    border: 1px solid rgba(139,105,20,0.18);
+    box-shadow: var(--shadow-soft);
+    padding: 0.25rem 0;
+    border-radius: 4px;
+}
+
+.ancient-dropdown .dropdown-item {
+    color: var(--ancient-parchment);
+    padding: 0.6rem 1rem;
+    transition: background 0.15s ease;
+}
+
+.ancient-dropdown .dropdown-item:hover {
+    background: rgba(212,175,55,0.06);
+    color: var(--ancient-gold);
+}
+
+/* Buttons - simplified */
+.btn-ancient-outline {
+    font-family: 'Cinzel', serif;
+    color: var(--ancient-gold);
+    border: 1px solid rgba(139,105,20,0.35);
+    background: transparent;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.9rem;
+    border-radius: 3px;
+    transition: background 0.18s ease, transform 0.12s ease;
+}
+
+.btn-ancient-outline:hover {
+    background: rgba(139,105,20,0.08);
+    transform: translateY(-1px);
+}
+
+.btn-ancient-primary {
+    font-family: 'Cinzel', serif;
+    background: var(--ancient-bronze);
+    border: none;
+    color: var(--ancient-parchment);
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: transform 0.08s ease, filter 0.08s ease;
+}
+
+.btn-ancient-primary:hover {
+    background: rgba(139,105,20,1);
+    filter: brightness(0.98);
+}
+
+/* ========== MODALS ========== */
+.ancient-modal .modal-content {
+    background: linear-gradient(180deg,#141412,#1f1f1e);
+    color: var(--form-text);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 10px;
+    box-shadow: var(--shadow-soft);
+}
+
+/* modal header */
+.ancient-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: transparent;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+
+/* Close */
+.ancient-close {
+    color: var(--ancient-parchment);
+    font-size: 1.6rem;
+}
+
+/* Relic Divider - simplified */
+.relic-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.relic-symbol {
+    font-size: 1.1rem;
+    color: var(--ancient-gold);
+}
+
+/* ========== HERO SECTION ========== */
+.ancient-hero {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #131313 0%, #1f1f1f 100%);
+    overflow: hidden;
+    padding: 3rem 1rem;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.hero-title-ancient {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 2.4rem;
+    color: var(--ancient-parchment);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.hero-highlight {
+    color: var(--ancient-gold);
+    display: block;
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle-ancient {
+    font-family: 'IM Fell English', serif;
+    font-size: 1rem;
+    color: var(--ancient-sepia);
+    font-style: italic;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Hero buttons */
+.btn-ancient-hero {
+    font-family: 'Cinzel', serif;
+    background: var(--ancient-bronze);
+    border: none;
+    color: var(--ancient-parchment);
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    margin: 0.5rem;
+}
+
+.btn-ancient-hero-outline {
+    font-family: 'Cinzel', serif;
+    background: transparent;
+    border: 1px solid rgba(212,175,55,0.14);
+    color: var(--ancient-gold);
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+    border-radius: 4px;
+}
+
+/* ========== SECTIONS ========== */
+.product-section-ancient,
+.contact-section-ancient {
+    background: transparent;
+    padding: 3rem 1rem;
+}
+
+/* Section titles */
+.section-title-ancient {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 1.8rem;
+    color: var(--ancient-gold);
+    margin-bottom: 0.75rem;
+}
+
+/* ========== PRODUCT CARD ========== */
+.product-image-frame {
+    position: relative;
+    height: 200px;
+    padding: 12px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(139,105,20,0.09);
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.ancient-product-image {
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+    filter: none;
+    transition: transform 0.25s ease;
+}
+
+.ancient-product-image:hover {
+    transform: scale(1.03);
+}
+
+.ancient-product-card {
+    position: relative;
+    background: #1e1e1d;
+    border: 1px solid rgba(139,105,20,0.09);
+    border-radius: 6px;
+    box-shadow: var(--shadow-subtle);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Card inner */
+.ancient-product-card .card-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.product-badge-ancient {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(139,105,20,0.9);
+    color: var(--ancient-parchment);
+    padding: 0.3rem 0.6rem;
+    border-radius: 3px;
+    font-size: 0.75rem;
+}
+
+/* Titles and text */
+.product-title-ancient {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 1.25rem;
+    color: var(--ancient-gold);
+    margin-bottom: 0.25rem;
+}
+
+.product-subtitle {
+    font-family: 'IM Fell English', serif;
+    font-size: 0.95rem;
+    color: var(--ancient-sepia);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.product-description-ancient {
+    font-family: 'IM Fell English', serif;
+    color: var(--ancient-sepia);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0.5rem 0 1rem 0;
+}
+
+/* Price box - simplified */
+.product-price-ancient {
+    padding: 0.9rem;
+    text-align: left;
+    border-top: 1px solid rgba(139,105,20,0.06);
+    background: rgba(255,255,255,0.01);
+}
+
+.current-price-ancient {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 1.6rem;
+    color: var(--ancient-gold);
+    font-weight: 700;
+}
+
+/* ========== CONTACT SECTION ========== */
+.ancient-contact-card {
+    background: #232322;
+    border: 1px solid rgba(139,105,20,0.08);
+    border-radius: 6px;
+    padding: 1rem;
+    box-shadow: var(--shadow-subtle);
+}
+
+.contact-icon {
+    font-size: 2rem;
+    color: var(--ancient-gold);
+    margin-bottom: 0.5rem;
+}
+
+/* ========== FOOTER ========== */
+.ancient-footer {
+    background: #161615;
+    border-top: 1px solid rgba(139,105,20,0.06);
+    padding: 1.5rem 1rem;
+    color: var(--ancient-aged);
+}
+
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+@media (max-width: 992px) {
+    .hero-title-ancient { font-size: 1.8rem; }
+    .hero-highlight { font-size: 2.2rem; }
+    .section-title-ancient { font-size: 1.4rem; }
+}
+
+@media (max-width: 576px) {
+    .hero-title-ancient { font-size: 1.4rem; }
+    .hero-highlight { font-size: 1.6rem; }
+    .btn-ancient-hero, .btn-ancient-hero-outline {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ========== UTILITY CLASSES ========== */
+.text-ancient-gold { color: var(--ancient-gold); }
+.text-ancient-bronze { color: var(--ancient-bronze); }
+.bg-ancient-dark { background: #141413; }
+.border-ancient { border: 1px solid rgba(139,105,20,0.08); }
+
+/* ========== SCROLLBAR (light) ========== */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #111110; }
+::-webkit-scrollbar-thumb {
+    background: rgba(139,105,20,0.25);
+    border-radius: 8px;
+}
+
+/* ========== FORM / INPUT IMPROVEMENTS ========== */
+.ancient-modal .modal-content {
+    background: linear-gradient(180deg,#141412,#1f1f1e);
+    color: var(--form-text);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 10px;
+    box-shadow: var(--shadow-soft);
+}
+
+.ancient-label {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--form-text);
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+}
+
+.ancient-input,
+.ancient-textarea,
+.custom-file-input {
+    background: rgba(255,255,255,0.02);
+    color: var(--form-text);
+    border: 1px solid var(--input-border);
+    caret-color: var(--ancient-gold);
+    padding: 0.55rem 0.75rem;
+    border-radius: 6px;
+    transition: box-shadow 0.12s ease, border-color 0.12s ease;
+    width: 100%;
+    font-size: 0.95rem;
+}
+
+.ancient-input::placeholder,
+.ancient-textarea::placeholder {
+    color: var(--placeholder);
+    opacity: 1;
+}
+
+.custom-file-label { color: var(--placeholder); }
+
+.ancient-input:focus,
+.ancient-textarea:focus,
+.custom-file-input:focus {
+    outline: none;
+    border-color: rgba(212,175,55,0.22);
+    box-shadow: 0 6px 18px rgba(212,175,55,0.06);
+    background: rgba(255,255,255,0.015);
+}
+
+/* ========== CONTACT FORM (DARK VARIANT FOR SITE THEME) ========== */
+/* Make the Sell Stone form darker to match the site's aesthetic */
+#contact .ancient-contact-card {
+    background: linear-gradient(180deg,#141412,#1f1f1e);
+    color: var(--form-text);
+    border: 1px solid rgba(139,105,20,0.08);
+}
+
+#contact .ancient-contact-card .ancient-label {
+    color: var(--form-text);
+}
+
+#contact .ancient-contact-card .ancient-input,
+#contact .ancient-contact-card .ancient-textarea,
+#contact .ancient-contact-card .custom-file-input {
+    background: rgba(255,255,255,0.02);
+    color: var(--form-text);
+    border: 1px solid var(--input-border);
+    box-shadow: none;
+}
+
+#contact .ancient-contact-card .ancient-input::placeholder,
+#contact .ancient-contact-card .ancient-textarea::placeholder,
+#contact .ancient-contact-card .custom-file-label {
+    color: var(--placeholder);
+}
+
+#contact .ancient-contact-card .ancient-checkbox {
+    accent-color: var(--ancient-bronze);
+}
+
+/* checkboxes */
+.ancient-checkbox {
+    width: 1.05rem;
+    height: 1.05rem;
+    accent-color: var(--ancient-bronze);
+}
+
+/* social button */
+.btn-ancient-social {
+    font-family: 'Cinzel', serif;
+    background: #ffffff10;
+    border: 1px solid rgba(255,255,255,0.04);
+    color: var(--form-text);
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    transition: transform 0.08s ease, background 0.12s ease;
+    cursor: pointer;
+}
+
+.btn-ancient-social:hover {
+    background: rgba(255,255,255,0.03);
+    transform: translateY(-1px);
+}
+
+/* clearer OR separator */
+.ancient-or {
+    text-align: center;
+    color: var(--ancient-aged);
+    font-size: 0.9rem;
+    margin: 0.6rem 0;
+}
+
+/* modal header tweaks */
+.ancient-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: transparent;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+
+/* auth toggle inside modal header */
+.auth-toggle {
+    display: inline-flex;
+    background: rgba(255,255,255,0.02);
+    border-radius: 999px;
+    padding: 3px;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.auth-toggle button {
+    border: none;
+    background: transparent;
+    color: var(--ancient-aged);
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.12s ease, color 0.12s ease;
+}
+
+.auth-toggle button.active {
+    background: rgba(212,175,55,0.14);
+    color: var(--ancient-parchment);
+}
+
+/* ====================== AUTH MODAL & FORM TWEAKS ====================== */
+/* Improve layout and visual clarity for login/register modal */
+
+#authModal .modal-dialog { max-width: 560px; }
+/* Give the auth modal a light, highly-contrasted surface so form fields are readable */
+#authModal .modal-content {
+    padding: 0;
+    overflow: visible;
+    background: linear-gradient(180deg,#fbf7ef,#f4ede1);
+    color: #111;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+#authModal .ancient-modal-header { padding: 1rem 1.25rem; align-items: center; }
+#authTitle { font-size: 1.12rem; color: var(--ancient-gold); margin: 0; font-weight: 700; }
+
+.auth-toggle { margin-left: auto; display: inline-flex; gap: 6px; }
+.auth-toggle button { padding: 0.42rem 0.72rem; color: var(--ancient-aged); background: rgba(0,0,0,0.03); border-radius: 999px; border: 1px solid rgba(0,0,0,0.06); }
+.auth-toggle button.active { background: rgba(212,175,55,0.16); color: var(--ancient-parchment); box-shadow: none; }
+
+/* Improved form layout and contrast */
+.auth-form {
+    padding: 1.25rem 1.4rem 1.35rem;
+    display: block;
+}
+.auth-form .form-group { margin-bottom: 0.9rem; display: flex; flex-direction: column; gap: 0.35rem; }
+.auth-form .ancient-label { display: block; margin-bottom: 0; font-weight: 800; color: #222; font-size: 0.95rem; }
+.auth-form .ancient-input,
+.auth-form .ancient-textarea,
+.auth-form .custom-file-input {
+    font-size: 0.98rem;
+    padding: 0.66rem 0.9rem;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #111;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: none;
+    width: 100%;
+}
+.auth-form .ancient-input::placeholder,
+.auth-form .ancient-textarea::placeholder { color: #6b6b6b; opacity: 1; }
+.auth-form .ancient-input:focus,
+.auth-form .ancient-textarea:focus,
+.auth-form .custom-file-input:focus {
+    outline: none;
+    border-color: rgba(212,175,55,0.28);
+    box-shadow: 0 8px 26px rgba(212,175,55,0.06);
+    background: #fff;
+}
+
+.auth-form .form-text { margin-top: 0.35rem; font-size: 0.9rem; color: #666; }
+
+/* grid helper for two-column rows (e.g., first/last name) */
+.auth-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.auth-form .form-row .form-group { margin-bottom: 0; }
+
+.auth-form .form-actions { display: flex; gap: 0.6rem; align-items: center; justify-content: space-between; margin-top: 0.5rem; }
+.auth-form button[type="submit"] { width: 100%; display: inline-flex; justify-content: center; align-items: center; gap: 0.5rem; padding: 0.72rem 0.9rem; border-radius: 8px; font-weight: 800; }
+
+.auth-socials { display: flex; gap: 0.6rem; align-items: center; margin-bottom: 0.6rem; }
+.btn-google { flex: 1; background: linear-gradient(90deg,#4285F4,#2A56C6); color: #fff; border: none; }
+.btn-ancient-social { flex: 1; }
+
+.ancient-or { margin: 0.6rem 0; text-align: center; color: #666; }
+
+.form-error { color: #b00020; background: rgba(255,230,230,0.9); padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.92rem; margin-bottom: 0.6rem; }
+
+/* helper centered text */
+.auth-form .helper-center { text-align: center; display: block; width: 100%; }
+
+@media (max-width: 576px) {
+    #authModal .modal-dialog { margin: 1rem; max-width: 94%; }
+    .auth-toggle { width: 100%; justify-content: center; margin-top: 0.5rem; }
+    .auth-toggle button { flex: 1; }
+    .auth-form { padding: 0.9rem; }
+    .auth-form .form-row { grid-template-columns: 1fr; }
+}
+
+/* modal-body padding */
+.ancient-modal .modal-body { padding: 1.25rem; }
+
+/* subtle field help */
+.ancient-subtext, .form-text { color: var(--ancient-aged); font-size: 0.9rem; }
+
+/* buttons adjustments */
+.btn-ancient-primary {
+    font-family: 'Cinzel', serif;
+    background: linear-gradient(180deg,var(--ancient-bronze), #6f4f10);
+    color: var(--ancient-parchment);
+    border: 1px solid rgba(212,175,55,0.14);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.45);
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: transform 0.08s ease, filter 0.08s ease;
+}
+
+.btn-ancient-outline {
+    font-family: 'Cinzel', serif;
+    color: var(--ancient-aged);
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.04);
+    background: transparent;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.9rem;
+    border-radius: 6px;
+}
+
+/* notification */
+.ancient-notification {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    background: rgba(26,26,24,0.96);
+    color: var(--ancient-parchment);
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: all 0.28s ease;
+    z-index: 11000;
+}
+
+.ancient-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* smaller adjustments for mobile */
+@media (max-width: 576px) {
+    .ancient-modal .modal-dialog { margin: 1.25rem; }
+    .auth-toggle button { padding: 0.35rem 0.5rem; font-size: 0.85rem; }
+}
+
+/* Make Google sign-in elements stretch to fill auth forms */
+.auth-socials {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    width: 100%;
+}
+
+.auth-socials .btn-google,
+.auth-socials .btn-ancient-social,
+#googleSignInLogin,
+#googleSignInRegister,
+.auth-socials .g_id_signin,
+.auth-socials .g_id_signin::part(root) {
+    flex: 1 1 100%;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 576px) {
+    .auth-socials { flex-direction: column; gap: 0.5rem; }
+}

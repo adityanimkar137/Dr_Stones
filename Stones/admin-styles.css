@@ -1,0 +1,589 @@
+
+        /* ========== ROOT VARIABLES ========== */
+        :root {
+            --ancient-parchment: #f4ede1;
+            --ancient-sepia: #e8dcc4;
+            --ancient-bronze: #8b6914;
+            --ancient-gold: #d4af37;
+            --ancient-copper: #b87333;
+            --ancient-stone: #5a5550;
+            --ancient-obsidian: #1a1714;
+            --ancient-moss: #4a5a3c;
+            --ancient-rust: #8b4513;
+            --ancient-aged: #c9b896;
+            --shadow-deep: 0 8px 32px rgba(0, 0, 0, 0.6);
+        }
+
+        /* ========== GLOBAL STYLES ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IM Fell English', serif;
+            background-color: var(--ancient-obsidian);
+            background-image: 
+                radial-gradient(ellipse at top, rgba(139, 105, 20, 0.15), transparent),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            color: var(--ancient-parchment);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ancient-gold);
+        }
+
+        /* ========== NAVBAR ========== */
+        .ancient-nav {
+            background: linear-gradient(135deg, rgba(26, 23, 20, 0.98), rgba(90, 85, 80, 0.95));
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--ancient-bronze);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+            padding: 1rem 0;
+        }
+
+        .ancient-brand {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--ancient-gold) !important;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand-rune {
+            color: var(--ancient-bronze);
+            font-size: 1.2rem;
+        }
+
+        .admin-badge {
+            background: var(--ancient-rust);
+            color: var(--ancient-parchment);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+            border: 1px solid var(--ancient-gold);
+        }
+
+        .btn-logout {
+            font-family: 'Cinzel', serif;
+            background: transparent;
+            border: 2px solid var(--ancient-rust);
+            color: var(--ancient-rust);
+            padding: 0.5rem 1.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .btn-logout:hover {
+            background: var(--ancient-rust);
+            color: var(--ancient-parchment);
+            box-shadow: 0 0 20px rgba(139, 69, 19, 0.6);
+        }
+
+        /* ========== ADMIN HEADER ========== */
+        .admin-header {
+            background: linear-gradient(135deg, rgba(139, 105, 20, 0.2), rgba(139, 69, 19, 0.2));
+            border: 3px solid var(--ancient-bronze);
+            border-left: none;
+            border-right: none;
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .admin-title {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 3rem;
+            color: var(--ancient-gold);
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+            margin-bottom: 1rem;
+        }
+
+        .admin-subtitle {
+            font-family: 'IM Fell English', serif;
+            font-size: 1.3rem;
+            color: var(--ancient-aged);
+            font-style: italic;
+        }
+
+        .title-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .title-ornament span {
+            color: var(--ancient-bronze);
+            font-size: 1.5rem;
+        }
+
+        .title-ornament .line {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--ancient-gold), transparent);
+        }
+
+        /* ========== STATS CARDS ========== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(26, 23, 20, 0.98), rgba(58, 54, 50, 0.95));
+            border: 3px solid var(--ancient-bronze);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-deep);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--ancient-bronze), var(--ancient-gold), var(--ancient-bronze));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-card:hover::before {
+            opacity: 0.3;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(139, 105, 20, 0.5);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            color: var(--ancient-gold);
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 2.5rem;
+            color: var(--ancient-gold);
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .stat-label {
+            font-family: 'Cinzel', serif;
+            color: var(--ancient-aged);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+        }
+
+        /* ========== PENDING REQUESTS SECTION ========== */
+        .section-header {
+            background: linear-gradient(135deg, rgba(139, 105, 20, 0.2), rgba(139, 69, 19, 0.2));
+            border-left: 4px solid var(--ancient-gold);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 2rem;
+            color: var(--ancient-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            font-family: 'IM Fell English', serif;
+            color: var(--ancient-aged);
+            font-style: italic;
+        }
+
+        /* ========== REQUEST CARDS ========== */
+        .request-card {
+            background: linear-gradient(135deg, rgba(26, 23, 20, 0.98), rgba(58, 54, 50, 0.95));
+            border: 3px solid var(--ancient-bronze);
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-deep);
+            overflow: hidden;
+            color: #1a1714;
+        }
+
+        .request-card-header {
+            background: linear-gradient(135deg, var(--ancient-bronze), var(--ancient-rust));
+            padding: 1.5rem;
+            border-bottom: 2px solid var(--ancient-gold);
+        }
+
+        .request-status {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--ancient-gold);
+            padding: 0.3rem 1rem;
+            border: 1px solid var(--ancient-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .request-date {
+            font-family: 'IM Fell English', serif;
+            color: var(--ancient-sepia);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .request-card-body {
+            padding: 2rem;
+        }
+
+        .stone-preview {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stone-image-container {
+            flex-shrink: 0;
+            width: 200px;
+            height: 200px;
+            border: 3px solid var(--ancient-bronze);
+            padding: 10px;
+            background: linear-gradient(135deg, rgba(139, 105, 20, 0.1), rgba(139, 69, 19, 0.1));
+            position: relative;
+        }
+
+        .stone-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.2);
+        }
+
+        .stone-details {
+            flex: 1;
+        }
+
+        .stone-name {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.8rem;
+            color: var(--ancient-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stone-subtitle {
+            font-family: 'IM Fell English', serif;
+            color: var(--ancient-copper);
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .stone-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-item {
+            background: rgba(139, 105, 20, 0.1);
+            border-left: 3px solid var(--ancient-bronze);
+            padding: 0.8rem;
+        }
+
+        .info-label {
+            font-family: 'Cinzel', serif;
+            color: var(--ancient-bronze);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-value {
+            color: var(--ancient-aged);
+            font-size: 1rem;
+        }
+
+        .stone-description {
+            background: rgba(139, 105, 20, 0.05);
+            border: 2px solid var(--ancient-stone);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .description-label {
+            font-family: 'Cinzel', serif;
+            color: var(--ancient-gold);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .description-text {
+            font-family: 'IM Fell English', serif;
+            color: var(--ancient-sepia);
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .vendor-info {
+            background: rgba(139, 69, 19, 0.1);
+            border: 2px solid var(--ancient-rust);
+            padding: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .vendor-label {
+            font-family: 'Cinzel', serif;
+            color: var(--ancient-copper);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .vendor-details {
+            color: var(--ancient-aged);
+            margin-top: 0.5rem;
+        }
+
+        /* ========== ACTION BUTTONS ========== */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-top: 2px solid var(--ancient-bronze);
+        }
+
+        .btn-approve {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(135deg, var(--ancient-moss), #2d3a24);
+            border: 2px solid #5a7045;
+            color: var(--ancient-parchment);
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 90, 60, 0.4);
+        }
+
+        .btn-approve:hover {
+            background: linear-gradient(135deg, #5a7045, var(--ancient-moss));
+            box-shadow: 0 6px 25px rgba(90, 112, 69, 0.6);
+            transform: translateY(-2px);
+            color: var(--ancient-parchment);
+        }
+
+        .btn-reject {
+            font-family: 'Cinzel', serif;
+            background: transparent;
+            border: 2px solid var(--ancient-rust);
+            color: var(--ancient-rust);
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .btn-reject:hover {
+            background: var(--ancient-rust);
+            color: var(--ancient-parchment);
+            box-shadow: 0 6px 25px rgba(139, 69, 19, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* ========== EMPTY STATE ========== */
+        .empty-state {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(26, 23, 20, 0.98), rgba(58, 54, 50, 0.95));
+            border: 3px solid var(--ancient-bronze);
+        }
+
+        .empty-icon {
+            font-size: 5rem;
+            color: var(--ancient-bronze);
+            margin-bottom: 2rem;
+            opacity: 0.5;
+        }
+
+        .empty-title {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 2rem;
+            color: var(--ancient-gold);
+            margin-bottom: 1rem;
+        }
+
+        .empty-text {
+            font-family: 'IM Fell English', serif;
+            color: var(--ancient-aged);
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        /* ========== NOTIFICATION ========== */
+        .ancient-notification {
+            position: fixed;
+            top: 100px;
+            right: -400px;
+            background: linear-gradient(135deg, rgba(26, 23, 20, 0.98), rgba(58, 54, 50, 0.98));
+            border: 3px solid var(--ancient-gold);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            transition: right 0.4s ease;
+            min-width: 350px;
+        }
+
+        .ancient-notification.show {
+            right: 30px;
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .notification-icon {
+            font-size: 2rem;
+            color: var(--ancient-gold);
+        }
+
+        .notification-text {
+            font-family: 'IM Fell English', serif;
+            color: var(--ancient-parchment);
+            font-size: 1rem;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .admin-title {
+                font-size: 2rem;
+            }
+
+            /* ========== PROPOSAL CARD GRID + HOVER DETAILS ========== */
+            .requests-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .request-card {
+                border-radius: 12px;
+                padding: 0.6rem;
+                transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms ease, z-index 0 0;
+                will-change: transform;
+                position: relative;
+                overflow: visible;
+                background: linear-gradient(180deg, rgba(250,248,242,0.02), rgba(250,248,242,0.01));
+            }
+
+            .request-card .proposal-image-container {
+                border-radius: 8px;
+                overflow: hidden;
+                border: 2px solid rgba(255,255,255,0.03);
+                background: rgba(0,0,0,0.06);
+            }
+
+            .request-card .proposal-details {
+                background: transparent;
+                padding: 0.25rem 0.6rem 0.6rem 0.6rem;
+                max-height: 140px;
+                overflow: hidden;
+                transition: max-height 300ms ease, padding 220ms ease;
+            }
+
+            .request-card .description-text-truncated {
+                display: block;
+                max-height: 84px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .request-card:hover, .request-card:focus-within {
+                transform: translateY(-8px) scale(1.02);
+                box-shadow: 0 22px 60px rgba(0,0,0,0.65), 0 6px 18px rgba(139,105,20,0.15);
+                z-index: 60;
+            }
+
+            .request-card:hover .proposal-details,
+            .request-card:focus-within .proposal-details {
+                max-height: 900px;
+                overflow: auto;
+            }
+
+            .request-card:hover .description-text-truncated,
+            .request-card:focus-within .description-text-truncated {
+                max-height: 1000px;
+            }
+
+            /* Ensure image scales nicely when the card grows */
+            .request-card img {
+                transition: transform 260ms ease;
+            }
+            .request-card:hover img {
+                transform: scale(1.03);
+            }
+
+            @media (max-width: 576px) {
+                .requests-grid {
+                    grid-template-columns: 1fr;
+                }
+                .request-card {
+                    transform: none !important;
+                }
+            }
+
+            .stone-preview {
+                flex-direction: column;
+            }
+
+            .stone-image-container {
+                width: 100%;
+                height: 250px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn-approve, .btn-reject {
+                width: 100%;
+            }
+
+            .stone-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
